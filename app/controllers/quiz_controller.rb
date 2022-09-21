@@ -14,8 +14,7 @@ class QuizController < ApplicationController
 
     attempt = Attempt.new
 
-    #STUB
-    attempt.group = Group.find(1)
+    attempt.group = Group.find(cookies[:group_id])
 
     attempt.asked_questions_count = params[:askedQuestionsCount]
 
