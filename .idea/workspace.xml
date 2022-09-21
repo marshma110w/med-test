@@ -4,14 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e1ac2afb-b5a8-4e9b-917c-24dfeca0a581" name="Changes" comment="application-init">
-      <change afterPath="$PROJECT_DIR$/app/javascript/stylesheets/application.scss" afterDir="false" />
+    <list default="true" id="e1ac2afb-b5a8-4e9b-917c-24dfeca0a581" name="Changes" comment="add-bootstrap-jquery-popperjs">
+      <change afterPath="$PROJECT_DIR$/app/assets/images/background.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/ekg.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/ekg_01.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/glukometr.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/patient.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/patient_small.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/pulsoksimetr.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/troponinovjy-minus.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/troponinovyj-test.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/stylesheets/quiz-styles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/javascript/packs/med-quiz.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/quiz/final.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/quiz/quiz.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/quiz/welcome.html.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/javascript/packs/application.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/application.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/welcome/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/welcome/index.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/webpack/environment.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/webpack/environment.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/welcome.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/welcome_controller.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/helpers/welcome_helper.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/welcome/index.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/controllers/welcome_controller_test.rb" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,32 +43,59 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/michael/projects/med-test&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
-    &quot;ruby.rails.projectView.checked&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/home/michael/projects/med-quiz",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "yarn",
+    "ruby.rails.projectView.checked": "true"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/assets/images" />
+    </key>
+  </component>
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="ruby -v" />
       <command value="rails -v" />
       <command value="rails g controller welcome_controller" />
       <command value="yarn add bootstrap jquery @popperjs/core" />
-      <command value="rails s" />
       <command value="bin/dev" />
       <command value="bin/rails s" />
+      <command value="rails db:migrate" />
+      <command value="rails s" />
+      <command value="rails c" />
+      <command value="rails console" />
     </option>
   </component>
-  <component name="RunManager" selected="Rails.Development: med-test">
+  <component name="RunManager" selected="Ruby Console.rails console">
+    <configuration name="rails console" type="IrbRunConfigurationType" factoryName="IRB console" temporary="true">
+      <module name="med-test" />
+      <IRB_RUN_CONFIG NAME="RUBY_ARGS" VALUE="" />
+      <IRB_RUN_CONFIG NAME="WORK DIR" VALUE="$MODULE_DIR$" />
+      <IRB_RUN_CONFIG NAME="SHOULD_USE_SDK" VALUE="false" />
+      <IRB_RUN_CONFIG NAME="ALTERN_SDK_NAME" VALUE="" />
+      <IRB_RUN_CONFIG NAME="myPassParentEnvs" VALUE="true" />
+      <EXTENSION ID="BundlerRunConfigurationExtension" BUNDLE_MODE="AUTO" bundleExecEnabled="true" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov" ENABLE_BRANCH_COVERAGE="true" ENABLE_FORKED_COVERAGE="true">
+        <COVERAGE_PATTERN ENABLED="true">
+          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
+        </COVERAGE_PATTERN>
+      </EXTENSION>
+      <EXTENSION ID="org.jetbrains.plugins.ruby.rails.run.RailsRunConfigurationExtension" SCRATCH_USE_RAILS_RUNNER="false" />
+      <IRB_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="$MODULE_DIR$/bin/rails" />
+      <IRB_RUN_CONFIG NAME="SCRIPT_ARGS" VALUE="console" />
+      <IRB_RUN_CONFIG NAME="CONSOLE_TYPE" VALUE="RAILS" />
+      <method v="2" />
+    </configuration>
     <configuration name="Development: med-test" type="RailsRunConfigurationType" factoryName="Rails">
       <module name="med-test" />
       <predefined_log_file enabled="true" id="RUBY_RAILS_SERVER" />
@@ -152,6 +193,15 @@
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_OPTION_TESTOPTS" VALUE="" />
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Ruby Console.rails console" />
+        <item itemvalue="Ruby Console.rails console" />
+        <item itemvalue="Ruby Console.rails console" />
+        <item itemvalue="Ruby Console.rails console" />
+        <item itemvalue="Ruby Console.rails console" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SpringUtil" SPRING_PRE_LOADER_OPTION="true" RAKE_SPRING_PRE_LOADER_OPTION="true" RAILS_SPRING_PRE_LOADER_OPTION="true" />
@@ -164,7 +214,7 @@
       <updated>1663745597040</updated>
       <workItem from="1663745598425" duration="1026000" />
       <workItem from="1663746679269" duration="1030000" />
-      <workItem from="1663747878868" duration="884000" />
+      <workItem from="1663747878868" duration="8606000" />
     </task>
     <task id="LOCAL-00001" summary="application-init">
       <created>1663748295746</created>
@@ -173,7 +223,14 @@
       <option name="project" value="LOCAL" />
       <updated>1663748295746</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="add-bootstrap-jquery-popperjs">
+      <created>1663749091661</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1663749091661</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -192,6 +249,35 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="application-init" />
-    <option name="LAST_COMMIT_MESSAGE" value="application-init" />
+    <MESSAGE value="add-bootstrap-jquery-popperjs" />
+    <option name="LAST_COMMIT_MESSAGE" value="add-bootstrap-jquery-popperjs" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="ruby-line">
+          <url>file://$PROJECT_DIR$/app/models/attempt.rb</url>
+          <line>18</line>
+          <properties myBlockOrdinal="-1">
+            <option name="block-ordinal" value="-1" />
+          </properties>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="IrbRunConfigurationType">
+        <watch expression="main_diagnosis" language="ruby" />
+        <watch expression="correct_main_diagnosis" language="ruby" />
+        <watch expression="a" language="ruby" />
+        <watch expression="b" language="ruby" />
+        <watch expression="b" language="ruby" />
+        <watch expression="a.to_set" language="ruby" />
+        <watch expression="b.to_set" language="ruby" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/med_test@rails_console.rcov" NAME="rails console Coverage Results" MODIFIED="1663756246148" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="med-test" />
   </component>
 </project>
