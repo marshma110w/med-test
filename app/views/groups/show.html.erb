@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<table class="table">
+  <thead>
+    <th>id</th>
+    <th>Название</th>
+    <th>Ссылка</th>
+    <th>QR код</th>
+  </thead>
+
+  <tbody>
+  <tr>
+    <td><%= @group.id %></td>
+    <td><%= link_to @group.custom_name.presence || @group.created_at.strftime('%d.%m.%Y'), @group %></td>
+    <td><%= to_quiz_group_url(@group) %></td>
+    <td><%= link_to 'Показать QR-код', code_group_path(@group) %></td>
+  </tr>
+  </tbody>
+</table>
+
+
+<%= link_to 'Изменить', edit_group_path(@group) %> |
+<%= link_to 'Назад', groups_path %>
