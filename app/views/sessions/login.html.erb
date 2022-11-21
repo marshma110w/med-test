@@ -1,0 +1,8 @@
+<h1>Admin login</h1>
+<%= form_tag '/login' do |form| %>
+  <%= form.label :username %>
+  <%= form.text_field :username %>
+  <%= form.label :password %>
+  <%= form.password_field :password %>
+  <%= form.submit_tag 'Логин' %>
+<% end %>

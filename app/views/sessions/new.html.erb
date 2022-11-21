@@ -1,0 +1,8 @@
+<h1>Admin login</h1>
+<%= form_with model:  @admin do |form| %>
+  <%= form.label :username %>
+  <%= form.text_field :username %>
+  <%= form.label :password %>
+  <%= form.password_field :password %>
+  <%= form.submit 'Логин' %>
+<% end %>

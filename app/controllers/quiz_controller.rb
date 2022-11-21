@@ -1,8 +1,6 @@
 class QuizController < ApplicationController
   skip_before_action :verify_authenticity_token, only: :attempt
-
-  def welcome
-  end
+  skip_before_action :admin_auth_check, only: [:quiz, :final, :attempt]
 
   def quiz
   end
