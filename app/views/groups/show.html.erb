@@ -12,7 +12,7 @@
   <tr>
     <td><%= @group.id %></td>
     <td><%= link_to @group.custom_name.presence || @group.created_at.strftime('%d.%m.%Y'), @group %></td>
-    <td><%= to_quiz_group_url(@group) %></td>
+    <td><%= @group.link %></td>
     <td><%= link_to 'Показать QR-код', code_group_path(@group) %></td>
   </tr>
   </tbody>

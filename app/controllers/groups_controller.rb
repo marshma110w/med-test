@@ -10,11 +10,6 @@ class GroupsController < ApplicationController
   def show
   end
 
-  def to_quiz
-    cookies[:group_id] = params[:id]
-    redirect_to quiz_quiz_path
-  end
-
   # GET /groups/new
   def new
     @group = Group.new
