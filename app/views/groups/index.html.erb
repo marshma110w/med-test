@@ -6,8 +6,10 @@
   <thead>
     <th>id</th>
     <th>Название</th>
+    <th>Результатов</th>
     <th colspan="2"></th>
     <th>Ссылка</th>
+    <th>Код группы</th>
     <th>QR код</th>
   </thead>
 
@@ -16,9 +18,11 @@
       <tr>
         <td><%= group.id %></td>
         <td><%= link_to group.custom_name.presence || group.created_at.strftime('%d.%m.%Y'), group %></td>
+        <td><%= group.attempts.count %></td>
         <td><%= link_to 'Изменить', edit_group_path(group) %></td>
         <td><%= link_to 'Удалить', group, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
         <td><%= group.link %></td>
+        <td><%= group.id %></td>
         <td><%= link_to 'Показать QR-код', code_group_path(group) %></td>
       </tr>
     <% end %>
