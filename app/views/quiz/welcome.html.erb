@@ -1,0 +1,8 @@
+<h1>Перед прохождением теста введите свои данные: </h1>
+
+<%= form_with url: personal_info_path, method: :post, attempt: @attempt do |form| %>
+  <%= form.text_field :name %>
+  <%= form.text_field :phone %>
+  <%= form.text_field :email %>
+  <%= form.submit 'Начать тест' %>
+<% end %>
