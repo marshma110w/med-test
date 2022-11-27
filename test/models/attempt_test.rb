@@ -10,7 +10,7 @@
 #  main_diagnosis                   :string           default(""), not null
 #  opened_ekg                       :boolean
 #  opened_glukometr                 :boolean
-#  opened_pulkoksimetr              :boolean
+#  opened_pulseoximetr              :boolean
 #  opened_trop_test                 :boolean
 #  treatment_medicate               :json
 #  treatment_non_medicate           :string

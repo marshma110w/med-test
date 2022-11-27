@@ -16,7 +16,7 @@ class QuizController < ApplicationController
 
     attempt.asked_questions_count = params[:askedQuestionsCount]
 
-    attempt.opened_pulkoksimetr = params[:openedPulkoksimetr]
+    attempt.opened_pulseoximetr = params[:openedPulkoksimetr]
     attempt.opened_ekg = params[:openedEkg]
     attempt.opened_glukometr = params[:openedGlukometr]
     attempt.opened_trop_test = params[:openedTroponinovyjTest]
