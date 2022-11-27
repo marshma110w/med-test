@@ -3,15 +3,17 @@
 # Table name: attempts
 #
 #  id                               :integer          not null, primary key
-#  asked_questions_count            :integer          default(0), not null
+#  asked_questions_count            :integer
 #  diagnosis_accompanying_illnesses :string
 #  diagnosis_complications          :string
-#  integer                          :integer          default(0), not null
-#  main_diagnosis                   :string           default(""), not null
+#  email                            :string
+#  main_diagnosis                   :string
+#  name                             :string
 #  opened_ekg                       :boolean
 #  opened_glukometr                 :boolean
 #  opened_pulseoximetr              :boolean
 #  opened_trop_test                 :boolean
+#  phone                            :string
 #  treatment_medicate               :json
 #  treatment_non_medicate           :string
 #  created_at                       :datetime         not null
@@ -24,8 +26,6 @@
 #
 class Attempt < ApplicationRecord
   belongs_to :group
-
-  validates :asked_questions_count, :main_diagnosis, presence: true
 
   def main_diagnosis_correct?
     main_diagnosis == correct_main_diagnosis

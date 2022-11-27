@@ -1,3 +1,12 @@
+function getParameterByName(name, url = window.location.href) {
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+      results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+
 var inputParametres = {
 
     //anamnesis input parametres
@@ -605,7 +614,8 @@ function finishModule() {
                 openedPulkoksimetr: inputParametres.openedPulkoksimetr,
                 openedTroponinovyjTest: inputParametres.openedTroponinovyjTest,
                 treatmentMedicate: inputParametres.treatmentMedicate,
-                treatmentNonMedicate: inputParametres.treatmentNonMedicate
+                treatmentNonMedicate: inputParametres.treatmentNonMedicate,
+                attemptId: getParameterByName('attempt_id')
             }
 
             inputParametres.diagnosisComplications.forEach(complication => {

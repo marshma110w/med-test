@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
   end
 
   def by_code
-    redirect_to quiz_code_path(params[:code]) and return if Group.find_by(id: params[:code])
+    redirect_to welcome_code_path(params[:code]) and return if Group.find_by(id: params[:code])
     redirect_to welcome_path, warning: 'Группа не найдена'
   end
 
