@@ -5,6 +5,7 @@
     <th>id</th>
     <th>Название</th>
     <th>Ссылка</th>
+    <th>Код группы</th>
     <th>QR код</th>
   </thead>
 
@@ -13,11 +14,38 @@
     <td><%= @group.id %></td>
     <td><%= link_to @group.custom_name.presence || @group.created_at.strftime('%d.%m.%Y'), @group %></td>
     <td><%= @group.link %></td>
+    <td><%= @group.id %></td>
     <td><%= link_to 'Показать QR-код', code_group_path(@group) %></td>
   </tr>
   </tbody>
 </table>
 
+<h1>Результаты теста:</h1>
+
+<table class="table">
+  <thead>
+    <th></th>
+    <th>Вопросов задано</th>
+    <th>Анализов открыто</th>
+    <th>Главный диагноз</th>
+    <th>Осложнения</th>
+    <th>Сопутствующие заболевания</th>
+    <th>Медикаментозное лечение</th>
+    <th>Немедикаментозное лечение</th>
+  </thead>
+  <tbody>
+    <% @group.attempts.each_with_index do |attempt, index| %>
+      <td><%= index + 1 %></td>
+      <td><%= attempt.asked_questions_count %></td>
+      <td><%= attempt.instrumental_researches_opened.values.count(true) %></td>
+      <td><%= attempt.main_diagnosis %></td>
+      <td><%= attempt.diagnosis_complications %></td>
+      <td><%= attempt.diagnosis_accompanying_illnesses %></td>
+      <td><%= attempt.treatment_medicate %></td>
+      <td><%= attempt.treatment_non_medicate %></td>
+    <% end %>
+  </tbody>
+</table>
 
 <%= link_to 'Изменить', edit_group_path(@group) %> |
 <%= link_to 'Назад', groups_path %>

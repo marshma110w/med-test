@@ -12,9 +12,9 @@ class SessionsController < ApplicationController
     @admin = Admin.find_by(username: params[:username])
     if @admin&.authenticate(params[:password])
       session[:admin_id] = @admin.id
-      redirect_to '/welcome'
+      redirect_to groups_path
     else
-      redirect_to '/login'
+      redirect_to login_path, warning: 'Авторизация не пройдена'
     end
   end
 
