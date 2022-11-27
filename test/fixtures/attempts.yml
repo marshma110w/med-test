@@ -6,12 +6,15 @@
 #  asked_questions_count            :integer          default(0), not null
 #  diagnosis_accompanying_illnesses :string
 #  diagnosis_complications          :string
+#  email                            :string
 #  integer                          :integer          default(0), not null
 #  main_diagnosis                   :string           default(""), not null
+#  name                             :string
 #  opened_ekg                       :boolean
 #  opened_glukometr                 :boolean
 #  opened_pulseoximetr              :boolean
 #  opened_trop_test                 :boolean
+#  phone                            :string
 #  treatment_medicate               :json
 #  treatment_non_medicate           :string
 #  created_at                       :datetime         not null

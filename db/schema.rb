@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_27_192800) do
+ActiveRecord::Schema.define(version: 2022_11_27_194100) do
 
   create_table "admins", force: :cascade do |t|
     t.string "username"
@@ -34,6 +34,9 @@ ActiveRecord::Schema.define(version: 2022_11_27_192800) do
     t.string "treatment_non_medicate"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.string "phone"
+    t.string "email"
     t.index ["group_id"], name: "index_attempts_on_group_id"
   end
 
