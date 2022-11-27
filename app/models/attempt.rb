@@ -54,7 +54,7 @@ class Attempt < ApplicationRecord
     {
      ekg: opened_ekg,
      glucometr: opened_glukometr,
-     puskosimetr: opened_pulkoksimetr,
+     puseoximetr: opened_pulseoximetr,
      trop_test: opened_trop_test
     }
   end
