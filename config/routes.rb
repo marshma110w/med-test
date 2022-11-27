@@ -15,5 +15,5 @@ Rails.application.routes.draw do
   get 'quiz/welcome'
   get 'quiz/final'
   get 'quiz/:group_id/quiz', to: 'quiz#quiz', as: :quiz_code
-  post 'quiz/attempt'
+  post 'quiz/:group_id/attempt', to: 'quiz#attempt'
 end
