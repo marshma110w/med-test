@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_17_043740) do
+ActiveRecord::Schema.define(version: 2022_11_27_192800) do
 
   create_table "admins", force: :cascade do |t|
     t.string "username"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2022_11_17_043740) do
     t.integer "group_id"
     t.integer "asked_questions_count", default: 0, null: false
     t.integer "integer", default: 0, null: false
-    t.boolean "opened_pulkoksimetr"
+    t.boolean "opened_pulseoximetr"
     t.boolean "opened_ekg"
     t.boolean "opened_glukometr"
     t.boolean "opened_trop_test"
