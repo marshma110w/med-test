@@ -35,14 +35,16 @@
   </thead>
   <tbody>
     <% @group.attempts.each_with_index do |attempt, index| %>
-      <td><%= index + 1 %></td>
-      <td><%= attempt.asked_questions_count %></td>
-      <td><%= attempt.instrumental_researches_opened.values.count(true) %></td>
-      <td><%= attempt.main_diagnosis %></td>
-      <td><%= attempt.diagnosis_complications %></td>
-      <td><%= attempt.diagnosis_accompanying_illnesses %></td>
-      <td><%= attempt.treatment_medicate %></td>
-      <td><%= attempt.treatment_non_medicate %></td>
+      <tr>
+        <td><%= index + 1 %></td>
+        <td><%= attempt.asked_questions_count %></td>
+        <td><%= attempt.instrumental_researches_opened.values.count(true) %></td>
+        <td><%= attempt.main_diagnosis %></td>
+        <td><%= attempt.diagnosis_complications %></td>
+        <td><%= attempt.diagnosis_accompanying_illnesses %></td>
+        <td><%= attempt.treatment_medicate %></td>
+        <td><%= attempt.treatment_non_medicate %></td>
+      </tr>
     <% end %>
   </tbody>
 </table>

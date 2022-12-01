@@ -1,23 +1,26 @@
-<div class="row">
-  <div class="mt-5 col-4 offset-4">
-    <h1>Перед прохождением теста введите свои данные: </h1>
-    <div class="row">
-      <%= form_with url: personal_info_path, method: :post, class: 'form' do |form| %>
-        <div class="form-group">
-          <%= form.label :name, 'Имя' %>
-          <%= form.text_field :name, class: 'form-control', placeholder: 'Иванов Иван Иванович' %>
-        </div>
-        <div class="form-group">
-          <%= form.label :phone, 'Номер телефона' %>
-          <%= form.text_field :phone, class: 'form-control', placeholder: '89852221133' %>
-        </div>
-        <div class="form-group">
-          <%= form.label :email, 'Адрес электронной почты' %>
-          <%= form.text_field :email, class: 'form-control', type: 'email', placeholder: 'ivan@example.com' %>
-        </div>
-        <%= form.submit 'Начать тест', class: 'btn btn-primary mt-2' %>
-
-      <% end %>
+<div class="container face">
+  <div class="row">
+    <div class="mt-5 col-4 offset-4 border rounded p-3" id="before-test-form">
+      <h1>Перед прохождением теста введите свои данные: </h1>
+      <div class="row">
+        <%= form_with url: personal_info_path, method: :post, class: 'form' do |form| %>
+          <div class="form-group pb-2">
+            <%= form.label :name, 'Имя' %>
+            <%= form.text_field :name, class: 'form-control', placeholder: 'Иванов Иван Иванович' %>
+          </div>
+          <div class="form-group pb-2">
+            <%= form.label :phone, 'Номер телефона' %>
+            <%= form.text_field :phone, class: 'form-control', placeholder: '89852221133' %>
+          </div>
+          <div class="form-group pb-2">
+            <%= form.label :email, 'Адрес электронной почты' %>
+            <%= form.text_field :email, class: 'form-control', type: 'email', placeholder: 'ivan@example.com' %>
+          </div>
+          <div class="row justify-content-end mx-1">
+            <%= form.submit 'Начать тест', class: 'btn btn-primary mt-2 col-3' %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
