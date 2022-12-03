@@ -11,7 +11,7 @@ class Group < ApplicationRecord
   has_many :attempts
 
   def link
-    "#{base_url}/quiz/#{self.id}/quiz"
+    "#{base_url}/quiz/#{self.id}/welcome"
   end
 
 end

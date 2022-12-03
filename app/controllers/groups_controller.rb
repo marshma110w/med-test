@@ -1,5 +1,6 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: %i[ show edit update destroy code ]
+  helper_method :color_helper, :string_color_helper
 
   # GET /groups or /groups.json
   def index
@@ -58,7 +59,7 @@ class GroupsController < ApplicationController
   end
 
   def code
-    @svg = RQRCode::QRCode.new(code_group_url(@group)).as_svg
+    @svg = RQRCode::QRCode.new(welcome_code_url(@group)).as_svg
   end
 
   private
@@ -71,4 +72,22 @@ class GroupsController < ApplicationController
     def group_params
       params.fetch(:group, {}).permit(:custom_name)
     end
+
+  def color_helper(val, max_val)
+    if val.to_f / max_val < 0.5
+      'text-danger'
+    elsif val.to_f / max_val < 0.88
+      'text-warning'
+    else
+      'text-success'
+    end
+  end
+
+  def string_color_helper(val, arr)
+    if arr.include?(val)
+      'text-success'
+    else
+      'text-danger'
+    end
+  end
 end

@@ -10,6 +10,18 @@ body {
   min-width: 100%;
 }
 
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
+
+.groups {
+  background-color: aliceblue;
+}
+
 .main-code-input {
   position: relative;
   top: 35vh;
@@ -46,6 +58,19 @@ body {
   background-color: #382b2e;
   min-height: 100%;
   min-width: 100%;
+}
+
+.group-table {
+  background-color: #828282;
+  color: white;
+}
+
+.attempts-table {
+  background-color: #ccddcc;
+}
+
+.dropdown-item-text {
+  min-width: fit-content;
 }
 
 #admin-form {
