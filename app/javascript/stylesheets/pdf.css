@@ -1,0 +1,16 @@
+table, th, td {
+    border: 1px solid;
+    border-collapse: collapse;
+}
+
+th, td {
+    text-align: center;
+}
+
+.nav-link {
+    display: none;
+}
+
+a {
+    display: none;
+}

@@ -9,6 +9,17 @@ class GroupsController < ApplicationController
 
   # GET /groups/1 or /groups/1.json
   def show
+    respond_to do |format|
+      format.html do
+      end
+      format.pdf do
+        html = render_to_string(layout: false, action: 'show.html.erb')
+
+        kit = PDFKit.new(html)
+        kit.stylesheets << "#{Rails.root}/app/javascript/stylesheets/pdf.css"
+        send_data(kit.to_pdf, filename: 'report.pdf', type: 'application/pdf', disposition: 'inline')
+      end
+    end
   end
 
   # GET /groups/new
@@ -24,14 +35,10 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
 
-    respond_to do |format|
-      if @group.save
-        format.html { redirect_to groups_url, notice: "Группа успешно создана"  }
-        format.json { render :index, status: :created }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @group.errors, status: :unprocessable_entity }
-      end
+    if @group.save
+      redirect_to groups_url, notice: "Группа успешно создана"
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -39,11 +46,9 @@ class GroupsController < ApplicationController
   def update
     respond_to do |format|
       if @group.update(group_params)
-        format.html { redirect_to groups_url, notice: "Группа успешно изменена"  }
-        format.json { render :index, status: :ok }
+        redirect_to groups_url, notice: "Группа успешно изменена"
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @group.errors, status: :unprocessable_entity }
+        render :edit, status: :unprocessable_entity
       end
     end
   end
@@ -63,15 +68,16 @@ class GroupsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_group
-      @group = Group.includes(:attempts).find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def group_params
-      params.fetch(:group, {}).permit(:custom_name)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_group
+    @group = Group.includes(:attempts).find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def group_params
+    params.fetch(:group, {}).permit(:custom_name)
+  end
 
   def color_helper(val, max_val)
     if val.to_f / max_val < 0.5
