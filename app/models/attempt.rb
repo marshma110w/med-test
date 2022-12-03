@@ -27,6 +27,23 @@
 class Attempt < ApplicationRecord
   belongs_to :group
 
+  def score
+    score = 0
+    score += main_diagnosis_correct? ? 50 : 0
+    score -= JSON.parse(diagnosis_complications).count
+    JSON.parse(diagnosis_accompanying_illnesses).each do |ill|
+      correct_illnesses.include?(ill) ? score += 2 : score -= 0
+    end
+    correct_illnesses.each { |ill| score -= 0 unless diagnosis_accompanying_illnesses.include?(ill) }
+    score += asked_questions_count
+    score += 3 * instrumental_researches_opened.values.count(true)
+    treatment_medicate_beautiful.values.flatten.each { |m| score += correct_drugs.include?(m) ? 5 : 0 }
+    correct_drugs.each { |d| score -= 0 unless treatment_medicate_beautiful.values.flatten.include?(d) }
+    JSON.parse(treatment_non_medicate).each { |t| correct_treatment_non_medicate.include?(t) ? score += 5 : score -= 0 }
+    correct_treatment_non_medicate.each { |t| score -= 0 unless treatment_non_medicate.include?(t) }
+    [score, 0].max
+  end
+
   def main_diagnosis_correct?
     main_diagnosis == correct_main_diagnosis
   end
@@ -50,6 +67,12 @@ class Attempt < ApplicationRecord
     content_equal?(JSON.parse(treatment_non_medicate), correct_treatment_non_medicate)
   end
 
+  def treatment_medicate_beautiful
+    treatment_medicate&.each_with_object({}) do |e, h|
+      h[e['name']] = e['drugs']
+    end
+  end
+
   def instrumental_researches_opened
     {
      ekg: opened_ekg,
@@ -57,12 +80,6 @@ class Attempt < ApplicationRecord
      puseoximetr: opened_pulseoximetr,
      trop_test: opened_trop_test
     }
-  end
-
-  private
-
-  def content_equal?(a, b)
-    a.to_set == b.to_set
   end
 
   def correct_illnesses
@@ -100,8 +117,22 @@ class Attempt < ApplicationRecord
     ]
   end
 
+  def correct_drugs
+    correct_treatment_medicate.each_with_object([]) do |h, arr|
+      arr.append(*h[:drugs])
+    end
+  end
+
   def correct_treatment_non_medicate
     ['Внутривенный доступ',
      'Оксигенотерапия']
   end
+
+  private
+
+  def content_equal?(a, b)
+    a.to_set == b.to_set
+  end
+
+
 end
