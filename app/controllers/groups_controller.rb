@@ -9,6 +9,17 @@ class GroupsController < ApplicationController
 
   # GET /groups/1 or /groups/1.json
   def show
+    respond_to do |format|
+      format.html do
+      end
+      format.pdf do
+        html = render_to_string(layout: false, action: 'show.html.erb')
+
+        kit = PDFKit.new(html)
+        kit.stylesheets << "#{Rails.root}/app/javascript/stylesheets/pdf.css"
+        send_data(kit.to_pdf, filename: 'report.pdf', type: 'application/pdf', disposition: 'inline')
+      end
+    end
   end
 
   # GET /groups/new

@@ -1,108 +1,112 @@
-<table class="table group-table mb-0">
-  <thead>
-    <th>id</th>
-    <th>Название</th>
-    <th>Ссылка</th>
-    <th>Код группы</th>
-    <th>QR код</th>
-  </thead>
-
-  <tbody>
-  <tr>
-    <td><%= @group.id %></td>
-    <td><%= link_to @group.custom_name.presence || @group.created_at.strftime('%d.%m.%Y'), @group %></td>
-    <td><%= @group.link %></td>
-    <td><%= @group.id %></td>
-    <td><%= link_to 'Показать QR-код', code_group_path(@group) %></td>
-  </tr>
-  </tbody>
-</table>
-
-<div class="">
-  <h1>Результаты теста:</h1>
-
-  <table class="table table-bordered">
+<div class="w-100 h-100">
+  <table class="table group-table mb-0">
     <thead>
-      <th></th>
-      <th>Личные данные</th>
-      <th>Вопросов задано</th>
-      <th>Анализов открыто</th>
-      <th>Главный диагноз</th>
-      <th>Осложнения</th>
-      <th>Сопутствующие заболевания</th>
-      <th>Медикаментозное лечение</th>
-      <th>Немедикаментозное лечение</th>
-      <th>Оценка</th>
+      <th>id</th>
+      <th>Название</th>
+      <th>Ссылка</th>
+      <th>Код группы</th>
+      <th>QR код</th>
     </thead>
-    <tbody>
-      <% @group.attempts.where.not(main_diagnosis: nil).each_with_index do |attempt, index| %>
-        <tr>
-          <td><%= index + 1 %></td>
-          <td>
-            <div class="dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="dropdownLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Личные данные
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="dropdownLink">
-                <li class="dropdown-item-text">Имя: <%= attempt.name.presence || ' -' %></li>
-                <li class="dropdown-item-text">Email: <%= attempt.email.presence || ' -' %></li>
-                <li class="dropdown-item-text">Телефон: <%= attempt.phone.presence || ' -' %></li>
-              </ul>
-            </div>
-          </td>
-          <td class="<%= color_helper(attempt.asked_questions_count, 9) %>"><%= attempt.asked_questions_count %> / 9</td>
-          <td class="<%= color_helper(attempt.instrumental_researches_opened.values.count(true), 4) %>">
-            <%= attempt.instrumental_researches_opened.values.count(true) %> / 4
-          </td>
-          <td class="<%= attempt.main_diagnosis_correct? ? 'green' : 'red' %>"><%= attempt.main_diagnosis %></td>
-          <td>
-            <% if attempt.diagnosis_complications.nil? or JSON.parse(attempt.diagnosis_complications).empty? %>
-              <p class="text-success">-</p>
-            <% else %>
-              <% JSON.parse(attempt.diagnosis_complications).each do |c| %>
-                <p class="my-0 text-danger"><%= c %></p>
-              <% end %>
-            <% end %>
 
-          </td>
-          <td>
-            <% if attempt.diagnosis_accompanying_illnesses.nil? or JSON.parse(attempt.diagnosis_accompanying_illnesses).empty? %>
-              <p class="text-danger">-</p>
-            <% else %>
-              <% JSON.parse(attempt.diagnosis_accompanying_illnesses).each do |i| %>
-                  <p class="my-0 <%= string_color_helper(i, attempt.correct_illnesses) %>"><%= i %></p>
-              <% end %>
-            <% end %>
-          </td>
-          <td>
-            <% if attempt.treatment_medicate_beautiful.empty? %>
-              <p class="text-danger">-</p>
-            <% else %>
-              <% attempt.treatment_medicate_beautiful.each do |k, v| %>
-                <p class="my-0"><%= k %>:</p>
-                <% v.each do |drug| %>
-                  <p class="my-0 mx-5 <%= string_color_helper(drug, attempt.correct_drugs) %>">&nbsp;<%= drug %></p>
-                <% end %>
-              <% end %>
-            <% end %>
-          </td>
-          <td>
-            <% if attempt.treatment_non_medicate.nil? or JSON.parse(attempt.treatment_non_medicate).empty? %>
-              <p class="text-danger">-</p>
-            <% else %>
-              <% JSON.parse(attempt.treatment_non_medicate).each do |t| %>
-                <p class="my-0 <%= string_color_helper(t, attempt.correct_treatment_non_medicate) %>"><%= t %></p>
-              <% end %>
-            <% end %>
-          </td>
-          <td class="<%= color_helper(attempt.score, 142) %>">
-            <%= attempt.score %> / 142
-          </td>
-        </tr>
-      <% end %>
+    <tbody>
+    <tr>
+      <td><%= @group.id %></td>
+      <td><%= link_to @group.custom_name.presence || @group.created_at.strftime('%d.%m.%Y'), @group %></td>
+      <td><%= @group.link %></td>
+      <td><%= @group.id %></td>
+      <td><%= link_to 'Показать QR-код', code_group_path(@group) %></td>
+    </tr>
     </tbody>
   </table>
-</div>
 
-<%= link_to 'Изменить', edit_group_path(@group) %> |
-<%= link_to 'Назад', groups_path %>
+  <div>
+    <div class="row">
+      <h1 class="col">Результаты теста:</h1>
+      <%= link_to 'В PDF', group_path(@group, format: :pdf), class: 'col-2 btn btn-primary mx-5 my-1' %>
+    </div>
+    <table class="table table-bordered">
+      <thead>
+        <th></th>
+        <th>Личные данные</th>
+        <th>Вопросов задано</th>
+        <th>Анализов открыто</th>
+        <th>Главный диагноз</th>
+        <th>Осложнения</th>
+        <th>Сопутствующие заболевания</th>
+        <th>Медикаментозное лечение</th>
+        <th>Немедикаментозное лечение</th>
+        <th>Оценка</th>
+      </thead>
+      <tbody>
+        <% @group.attempts.where.not(main_diagnosis: nil).each_with_index do |attempt, index| %>
+          <tr>
+            <td><%= index + 1 %></td>
+            <td>
+              <div class="dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdownLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Личные данные
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownLink">
+                  <li class="dropdown-item-text">Имя: <%= attempt.name.presence || ' -' %></li>
+                  <li class="dropdown-item-text">Email: <%= attempt.email.presence || ' -' %></li>
+                  <li class="dropdown-item-text">Телефон: <%= attempt.phone.presence || ' -' %></li>
+                </ul>
+              </div>
+            </td>
+            <td class="<%= color_helper(attempt.asked_questions_count, 9) %>"><%= attempt.asked_questions_count %> / 9</td>
+            <td class="<%= color_helper(attempt.instrumental_researches_opened.values.count(true), 4) %>">
+              <%= attempt.instrumental_researches_opened.values.count(true) %> / 4
+            </td>
+            <td class="<%= attempt.main_diagnosis_correct? ? 'green' : 'red' %>"><%= attempt.main_diagnosis %></td>
+            <td>
+              <% if attempt.diagnosis_complications.nil? or JSON.parse(attempt.diagnosis_complications).empty? %>
+                <p class="text-success">-</p>
+              <% else %>
+                <% JSON.parse(attempt.diagnosis_complications).each do |c| %>
+                  <p class="my-0 text-danger"><%= c %></p>
+                <% end %>
+              <% end %>
+
+            </td>
+            <td>
+              <% if attempt.diagnosis_accompanying_illnesses.nil? or JSON.parse(attempt.diagnosis_accompanying_illnesses).empty? %>
+                <p class="text-danger">-</p>
+              <% else %>
+                <% JSON.parse(attempt.diagnosis_accompanying_illnesses).each do |i| %>
+                    <p class="my-0 <%= string_color_helper(i, attempt.correct_illnesses) %>"><%= i %></p>
+                <% end %>
+              <% end %>
+            </td>
+            <td>
+              <% if attempt.treatment_medicate_beautiful.empty? %>
+                <p class="text-danger">-</p>
+              <% else %>
+                <% attempt.treatment_medicate_beautiful.each do |k, v| %>
+                  <p class="my-0"><%= k %>:</p>
+                  <% v.each do |drug| %>
+                    <p class="my-0 mx-5 <%= string_color_helper(drug, attempt.correct_drugs) %>">&nbsp;<%= drug %></p>
+                  <% end %>
+                <% end %>
+              <% end %>
+            </td>
+            <td>
+              <% if attempt.treatment_non_medicate.nil? or JSON.parse(attempt.treatment_non_medicate).empty? %>
+                <p class="text-danger">-</p>
+              <% else %>
+                <% JSON.parse(attempt.treatment_non_medicate).each do |t| %>
+                  <p class="my-0 <%= string_color_helper(t, attempt.correct_treatment_non_medicate) %>"><%= t %></p>
+                <% end %>
+              <% end %>
+            </td>
+            <td class="<%= color_helper(attempt.score, 142) %>">
+              <%= attempt.score %> / 142
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <%= link_to 'Изменить', edit_group_path(@group) %> |
+  <%= link_to 'Назад', groups_path %>
+</div>
