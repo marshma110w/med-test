@@ -44,12 +44,10 @@ class GroupsController < ApplicationController
 
   # PATCH/PUT /groups/1 or /groups/1.json
   def update
-    respond_to do |format|
       if @group.update(group_params)
         redirect_to groups_url, notice: "Группа успешно изменена"
       else
         render :edit, status: :unprocessable_entity
-      end
     end
   end
 
