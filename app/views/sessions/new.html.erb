@@ -8,6 +8,9 @@
 <%# end %>
 
 <div class="container admin">
+  <% flash.each do |k, v| %>
+    <%= tag.div v, class: "alert alert-#{k} mt-0", role: 'alert' %>
+  <% end %>
   <div class="row">
     <div class="mt-5 col-4 offset-4 border rounded p-3" id="admin-form">
       <h1>Авторизация администратора</h1>

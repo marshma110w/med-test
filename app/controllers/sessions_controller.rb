@@ -22,5 +22,6 @@ class SessionsController < ApplicationController
   end
 
   def welcome
+    session[:admin_id] = nil
   end
 end
