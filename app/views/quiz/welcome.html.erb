@@ -1,4 +1,7 @@
 <div class="container face">
+  <% flash.each do |k, v| %>
+    <%= tag.div v, class: "alert alert-#{k} mt-0", role: 'alert' %>
+  <% end %>
   <div class="row">
     <div class="mt-5 col-4 offset-4 border rounded p-3 white-form">
       <h1>Перед прохождением теста введите свои данные: </h1>

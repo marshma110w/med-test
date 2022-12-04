@@ -12,7 +12,7 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get login" do
-    get sessions_login_url
+    get sessions_create_url
     assert_response :success
   end
 
